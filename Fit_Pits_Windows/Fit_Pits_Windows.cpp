@@ -1,8 +1,13 @@
 //This program aims to fix pits to assure all water in a watershed to flow out of a point
 //Windows version, created by Guoping Tang
 #include <iostream>
-#include <fstream>
 #include <iomanip>
+#include <fstream>
+#include <math.h>
+#include <CString>
+#include <cstdio>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -20,8 +25,23 @@ int main(int argc, char *argv[]){
 	double **pDem = { nullptr }, **pIndex = { nullptr };
 
 	//open and create files
+	/*inFile.open("D://preparedata//XF_resample.asc", ios::in);
+	outFile.open("D://preparedata//xf_resample_fill.asc", ios::out);*/
+	//inFile.open("D://GIS_WATERSHED//flowtable//cleve_matchall.dem", ios::in);
+	//outFile.open("D://GIS_WATERSHED//flowtable//cleve_matchall_fill.asc", ios::out);
 	ifstream ifs;
-	ifs.open("c:\\file4.txt", ios::in);
+	ifs.open("c:\\file3.txt", ios::in);
+
+	string buf_in;
+	string buf_out;
+	getline(ifs, buf_in);
+	while (getline(ifs, buf_out))
+	{
+		cout << buf_out << endl;
+	}
+
+	inFile.open(buf_in, ios::in);
+	outFile.open(buf_out, ios::out);
 
 	//open an file and check if openig a file is success
 	if (!inFile)

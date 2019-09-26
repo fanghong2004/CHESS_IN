@@ -4,6 +4,10 @@
 #include <iomanip>
 #include <fstream>
 #include <math.h>
+#include <CString>
+#include <cstdio>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -20,8 +24,22 @@ int main(int argc, char const *argv[])
 	double nodata, xllcorner, yllcorner, cellsize;
 
 	//open and check if opening file is successful
-	demFile.open("D://muzhen//guhui//250//flowtable//lxh_250.dem", ios::in);
-	westFile.open("D://muzhen//guhui//250//flowtable//lxh_250.west", ios::out);
+	/*demFile.open("D://muzhen//guhui//250//flowtable//lxh_250.dem", ios::in);
+	westFile.open("D://muzhen//guhui//250//flowtable//lxh_250.west", ios::out);*/
+	ifstream ifs;
+	ifs.open("c:\\file5.txt", ios::in);
+
+	string buf_in;
+	string buf_out;
+	getline(ifs, buf_in);
+	while (getline(ifs, buf_out))
+	{
+		cout << buf_out << endl;
+	}
+
+	demFile.open(buf_in, ios::in);
+	westFile.open(buf_out, ios::out);
+
 	if (!demFile)
 	{
 		cerr << "fail to open input file!" << endl;

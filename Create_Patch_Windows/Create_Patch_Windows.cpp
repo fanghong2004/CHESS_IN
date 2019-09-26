@@ -1,8 +1,13 @@
 //This program uses watershed ASCII image to create patch file
 //windows version, created by Guoping Tang
 #include <iostream>
-#include <fstream>
 #include <iomanip>
+#include <fstream>
+#include <math.h>
+#include <CString>
+#include <cstdio>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,9 +23,23 @@ int main(){
 	double nodata, xllcorner, yllcorner, cellsize, newvalue;
 	double **pDem;
 
+	ifstream ifs;
+	ifs.open("c:\\file6.txt", ios::in);
 	//open and create files and check if they are successful
-	inFile.open("D://preparedata//xf_ws.asc", ios::in);
-	outFile.open("D://preparedata//xf_ws.patch.asc", ios::out);
+	/*inFile.open("D://preparedata//xf_ws.asc", ios::in);
+	outFile.open("D://preparedata//xf_ws.patch.asc", ios::out);*/
+
+	string buf_in;
+	string buf_out;
+	getline(ifs, buf_in);
+	while (getline(ifs, buf_out))
+	{
+		cout << buf_out << endl;
+	}
+
+	inFile.open(buf_in, ios::in);
+	outFile.open(buf_out, ios::out);
+
 	if (!inFile)
 	{
 		cerr << "fail to open input file!" << endl;
